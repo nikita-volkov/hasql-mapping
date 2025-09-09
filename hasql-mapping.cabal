@@ -1,0 +1,43 @@
+cabal-version: 3.0
+name: hasql-mapping
+version: 0
+
+common base
+  default-language: Haskell2010
+  default-extensions:
+    ApplicativeDo
+    BlockArguments
+    DefaultSignatures
+    DeriveFunctor
+    DerivingStrategies
+    DerivingVia
+    DuplicateRecordFields
+    FlexibleContexts
+    FlexibleInstances
+    FunctionalDependencies
+    GeneralizedNewtypeDeriving
+    LambdaCase
+    MagicHash
+    MultiParamTypeClasses
+    NoFieldSelectors
+    NoImplicitPrelude
+    OverloadedRecordDot
+    OverloadedStrings
+    ScopedTypeVariables
+    TypeApplications
+    TypeFamilies
+    UndecidableSuperClasses
+
+library
+  import: base
+  hs-source-dirs: src/library
+  exposed-modules: HasqlMapping
+  other-modules:
+    HasqlMapping.IsStatement
+    HasqlMapping.IsTransactionalStatement
+
+  build-depends:
+    base >=4.12 && <5,
+    hasql ^>=1.9.1.2,
+    tagged >=0.8 && <0.9,
+    text >=1.2 && <3,
