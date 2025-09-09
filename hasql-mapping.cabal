@@ -31,10 +31,10 @@ common base
 library
   import: base
   hs-source-dirs: src/library
-  exposed-modules: HasqlMapping
+  exposed-modules: Hasql.Mapping
   other-modules:
-    HasqlMapping.IsStatement
-    HasqlMapping.IsTransactionalStatement
+    Hasql.Mapping.IsStatement
+    Hasql.Mapping.IsTransactionalStatement
 
   build-depends:
     base >=4.12 && <5,

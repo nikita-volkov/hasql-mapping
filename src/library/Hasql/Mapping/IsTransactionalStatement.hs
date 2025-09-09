@@ -1,7 +1,7 @@
-module HasqlMapping.IsTransactionalStatement where
+module Hasql.Mapping.IsTransactionalStatement where
 
 import Data.Tagged (Tagged (..))
-import HasqlMapping.IsStatement
+import Hasql.Mapping.IsStatement
 import Prelude
 
 -- | A statement that has transactional properties associated with it.

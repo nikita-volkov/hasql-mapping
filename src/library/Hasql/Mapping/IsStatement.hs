@@ -1,4 +1,4 @@
-module HasqlMapping.IsStatement where
+module Hasql.Mapping.IsStatement where
 
 import Data.Tagged (Tagged (..))
 import Data.Text (Text)
