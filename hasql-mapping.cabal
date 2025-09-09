@@ -1,6 +1,11 @@
 cabal-version: 3.0
 name: hasql-mapping
 version: 0
+synopsis: A library for defining modular mappings to PostgreSQL
+description:
+  This library provides everything you need to define mappings to PostgreSQL using Hasql and promotes modular design.
+
+  It avoids exporting abstractions unrelated to mapping, ensuring more stable versioning.
 
 common base
   default-language: Haskell2010
