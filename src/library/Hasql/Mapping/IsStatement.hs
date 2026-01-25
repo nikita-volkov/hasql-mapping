@@ -2,11 +2,8 @@ module Hasql.Mapping.IsStatement where
 
 import Data.Tagged (Tagged (..))
 import Data.Text (Text)
-import qualified Hasql.Decoders
-import qualified Hasql.Encoders
+import qualified Hasql.Statement as Statement
 
 class IsStatement a where
-  type Result a
-  sql :: Tagged a Text
-  encoder :: Hasql.Encoders.Params a
-  decoder :: Tagged a (Hasql.Decoders.Result (Result a))
+  type ResultOf a
+  statementOf :: Statement.Statement a (ResultOf a)
