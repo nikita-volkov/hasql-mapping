@@ -1,14 +1,11 @@
 module Hasql.Mapping.IsScalar where
 
-import Control.Applicative (Applicative (..))
 import qualified Data.Aeson as Aeson
 import Data.ByteString (ByteString)
-import Data.Functor (Functor (..), (<$>))
-import Data.Functor.Contravariant (Contravariant (..), (>$<))
+import Data.Functor.Contravariant ((>$<))
 import Data.IP (IPRange)
 import Data.Int (Int16, Int32, Int64)
 import Data.Scientific (Scientific)
-import Data.Tagged (Tagged (..))
 import Data.Text (Text)
 import Data.Time (Day, DiffTime, LocalTime, TimeOfDay, TimeZone, UTCTime)
 import Data.UUID (UUID)

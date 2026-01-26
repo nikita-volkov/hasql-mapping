@@ -6,4 +6,3 @@ where
 
 import Hasql.Mapping.IsScalar as Exports
 import Hasql.Mapping.IsStatement as Exports
-import Hasql.Mapping.IsTransactionalStatement as Exports
