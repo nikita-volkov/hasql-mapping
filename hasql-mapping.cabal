@@ -7,6 +7,21 @@ description:
 
   It avoids exporting abstractions unrelated to mapping, ensuring more stable versioning.
 
+homepage: https://github.com/nikita-volkov/hasql-mapping
+bug-reports: https://github.com/nikita-volkov/hasql-mapping/issues
+author: Nikita Volkov <nikita.y.volkov@mail.ru>
+maintainer: Nikita Volkov <nikita.y.volkov@mail.ru>
+copyright: (c) 2026, Nikita Volkov
+license: MIT
+license-file: LICENSE
+extra-doc-files:
+  LICENSE
+  README.md
+
+source-repository head
+  type: git
+  location: https://github.com/nikita-volkov/hasql-mapping
+
 common base
   default-language: Haskell2010
   default-extensions:
