@@ -16,92 +16,92 @@ import Prelude
 
 -- | Mapping to a scalar value. Anything but array.
 class IsScalar a where
-  encoder :: Encoders.Value a
-  decoder :: Decoders.Value a
+  scalarEncoder :: Encoders.Value a
+  scalarDecoder :: Decoders.Value a
 
 -- Numeric types
 instance IsScalar Bool where
-  encoder = Encoders.bool
-  decoder = Decoders.bool
+  scalarEncoder = Encoders.bool
+  scalarDecoder = Decoders.bool
 
 instance IsScalar Int16 where
-  encoder = Encoders.int2
-  decoder = Decoders.int2
+  scalarEncoder = Encoders.int2
+  scalarDecoder = Decoders.int2
 
 instance IsScalar Int32 where
-  encoder = Encoders.int4
-  decoder = Decoders.int4
+  scalarEncoder = Encoders.int4
+  scalarDecoder = Decoders.int4
 
 instance IsScalar Int64 where
-  encoder = Encoders.int8
-  decoder = Decoders.int8
+  scalarEncoder = Encoders.int8
+  scalarDecoder = Decoders.int8
 
 instance IsScalar Int where
-  encoder = fromIntegral >$< Encoders.int8
-  decoder = fromIntegral <$> Decoders.int8
+  scalarEncoder = fromIntegral >$< Encoders.int8
+  scalarDecoder = fromIntegral <$> Decoders.int8
 
 instance IsScalar Float where
-  encoder = Encoders.float4
-  decoder = Decoders.float4
+  scalarEncoder = Encoders.float4
+  scalarDecoder = Decoders.float4
 
 instance IsScalar Double where
-  encoder = Encoders.float8
-  decoder = Decoders.float8
+  scalarEncoder = Encoders.float8
+  scalarDecoder = Decoders.float8
 
 instance IsScalar Scientific where
-  encoder = Encoders.numeric
-  decoder = Decoders.numeric
+  scalarEncoder = Encoders.numeric
+  scalarDecoder = Decoders.numeric
 
 -- Text types
 instance IsScalar Text where
-  encoder = Encoders.text
-  decoder = Decoders.text
+  scalarEncoder = Encoders.text
+  scalarDecoder = Decoders.text
 
 -- Binary types
 instance IsScalar ByteString where
-  encoder = Encoders.bytea
-  decoder = Decoders.bytea
+  scalarEncoder = Encoders.bytea
+  scalarDecoder = Decoders.bytea
 
 -- Date/Time types
 instance IsScalar Day where
-  encoder = Encoders.date
-  decoder = Decoders.date
+  scalarEncoder = Encoders.date
+  scalarDecoder = Decoders.date
 
 instance IsScalar LocalTime where
-  encoder = Encoders.timestamp
-  decoder = Decoders.timestamp
+  scalarEncoder = Encoders.timestamp
+  scalarDecoder = Decoders.timestamp
 
 instance IsScalar UTCTime where
-  encoder = Encoders.timestamptz
-  decoder = Decoders.timestamptz
+  scalarEncoder = Encoders.timestamptz
+  scalarDecoder = Decoders.timestamptz
 
 instance IsScalar TimeOfDay where
-  encoder = Encoders.time
-  decoder = Decoders.time
+  scalarEncoder = Encoders.time
+  scalarDecoder = Decoders.time
 
 instance IsScalar (TimeOfDay, TimeZone) where
-  encoder = Encoders.timetz
-  decoder = Decoders.timetz
+  scalarEncoder = Encoders.timetz
+  scalarDecoder = Decoders.timetz
 
 instance IsScalar DiffTime where
-  encoder = Encoders.interval
-  decoder = Decoders.interval
+  scalarEncoder = Encoders.interval
+  scalarDecoder = Decoders.interval
 
 -- UUID
 instance IsScalar UUID where
-  encoder = Encoders.uuid
-  decoder = Decoders.uuid
+  scalarEncoder = Encoders.uuid
+  scalarDecoder = Decoders.uuid
 
 -- Network types
 instance IsScalar IPRange where
-  encoder = Encoders.inet
-  decoder = Decoders.inet
+  scalarEncoder = Encoders.inet
+  scalarDecoder = Decoders.inet
 
 instance IsScalar (Word8, Word8, Word8, Word8, Word8, Word8) where
-  encoder = Encoders.macaddr
-  decoder = Decoders.macaddr
+  scalarEncoder = Encoders.macaddr
+  scalarDecoder = Decoders.macaddr
 
 -- JSON types
 instance IsScalar Aeson.Value where
-  encoder = Encoders.jsonb
-  decoder = Decoders.jsonb
+  scalarEncoder = Encoders.jsonb
+  scalarDecoder = Decoders.jsonb
