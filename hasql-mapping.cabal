@@ -24,9 +24,7 @@ common base
     LambdaCase
     MagicHash
     MultiParamTypeClasses
-    NoFieldSelectors
     NoImplicitPrelude
-    OverloadedRecordDot
     OverloadedStrings
     ScopedTypeVariables
     TypeApplications
