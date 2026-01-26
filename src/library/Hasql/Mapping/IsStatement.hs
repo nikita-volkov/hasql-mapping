@@ -6,5 +6,5 @@ import qualified Hasql.Statement as Statement
 --
 -- Use this to define modular mappings, where each statement is defined in an isolated module
 class IsStatement a where
-  type ResultOf a
-  statementOf :: Statement.Statement a (ResultOf a)
+  type Result a
+  statement :: Statement.Statement a (Result a)
