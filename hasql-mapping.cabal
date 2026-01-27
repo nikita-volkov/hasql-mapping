@@ -37,14 +37,12 @@ common base
     FunctionalDependencies
     GeneralizedNewtypeDeriving
     LambdaCase
-    MagicHash
     MultiParamTypeClasses
     NoImplicitPrelude
     OverloadedStrings
     ScopedTypeVariables
     TypeApplications
     TypeFamilies
-    UndecidableSuperClasses
 
 library
   import: base
