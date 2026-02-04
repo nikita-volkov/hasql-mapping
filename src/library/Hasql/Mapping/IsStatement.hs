@@ -2,9 +2,54 @@ module Hasql.Mapping.IsStatement where
 
 import qualified Hasql.Statement as Statement
 
--- | Mapping to a SQL statement indexed by its parameter type with result type associated.
+-- |
+-- Evidence that a data-structure models statement parameters determining the statement and its result type.
 --
--- Use this to define modular mappings, where each statement is defined in an isolated module.
+-- Supports a modularisation pattern, where you define everything related to one statement in an isolated module.
+-- This pattern leads to high code cohesion and low coupling.
+--
+-- ==== __Example of such a module__
+--
+-- > module MusicCatalogueDb.Statements.SelectArtistIdsByName where
+-- >
+-- > import Data.Functor.Contravariant
+-- > import Data.Text (Text)
+-- > import Data.UUID (UUID)
+-- > import Data.Vector (Vector)
+-- > import qualified Hasql.Decoders as Decoders
+-- > import qualified Hasql.Encoders as Encoders
+-- > import Hasql.Mapping.IsStatement
+-- > import Prelude
+-- >
+-- > data SelectArtistIdsByNameParams = SelectArtistIdsByNameParams
+-- >   { name :: Text
+-- >   }
+-- >
+-- > type SelectArtistIdsByNameResult = Vector SelectArtistIdsByNameResultRow
+-- >
+-- > data SelectArtistIdsByNameResultRow = SelectArtistIdsByNameResultRow
+-- >   { id :: UUID
+-- >   }
+-- >
+-- > instance IsStatement SelectArtistIdsByNameParams where
+-- >   type Result SelectArtistIdsByNameParams = SelectArtistIdsByNameResult
+-- >   statement =
+-- >     Statement.preparable sql encoder decoder
+-- >     where
+-- >       sql =
+-- >         "select id from artist\n\
+-- >         \where name = $1\n\
+-- >         \limit 1"
+-- >       encoder =
+-- >         mconcat
+-- >           [ (\(SelectArtistIdsByNameParams x) -> x)
+-- >               >$< Encoders.param (Encoders.nonNullable Encoders.text)
+-- >           ]
+-- >       decoder =
+-- >         Decoders.rowVector
+-- >           ( SelectArtistIdsByNameResultRow
+-- >               <$> Decoders.column (Decoders.nonNullable Decoders.uuid)
+-- >           )
 class IsStatement a where
   type Result a
   statement :: Statement.Statement a (Result a)
