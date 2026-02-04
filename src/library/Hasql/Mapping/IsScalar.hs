@@ -15,96 +15,96 @@ import qualified Hasql.Encoders as Encoders
 import Prelude
 
 -- | Mapping to a scalar value. Anything but array.
--- 
+--
 -- The current Hasql API doesn't provide a typesafe boundary to enforce the value being scalar,
 -- so consider this to be a part of the contract to not define instances for array mappings using this class.
 class IsScalar a where
-  scalarEncoder :: Encoders.Value a
-  scalarDecoder :: Decoders.Value a
+  encoder :: Encoders.Value a
+  decoder :: Decoders.Value a
 
 -- Numeric types
 instance IsScalar Bool where
-  scalarEncoder = Encoders.bool
-  scalarDecoder = Decoders.bool
+  encoder = Encoders.bool
+  decoder = Decoders.bool
 
 instance IsScalar Int16 where
-  scalarEncoder = Encoders.int2
-  scalarDecoder = Decoders.int2
+  encoder = Encoders.int2
+  decoder = Decoders.int2
 
 instance IsScalar Int32 where
-  scalarEncoder = Encoders.int4
-  scalarDecoder = Decoders.int4
+  encoder = Encoders.int4
+  decoder = Decoders.int4
 
 instance IsScalar Int64 where
-  scalarEncoder = Encoders.int8
-  scalarDecoder = Decoders.int8
+  encoder = Encoders.int8
+  decoder = Decoders.int8
 
 instance IsScalar Int where
-  scalarEncoder = fromIntegral >$< Encoders.int8
-  scalarDecoder = fromIntegral <$> Decoders.int8
+  encoder = fromIntegral >$< Encoders.int8
+  decoder = fromIntegral <$> Decoders.int8
 
 instance IsScalar Float where
-  scalarEncoder = Encoders.float4
-  scalarDecoder = Decoders.float4
+  encoder = Encoders.float4
+  decoder = Decoders.float4
 
 instance IsScalar Double where
-  scalarEncoder = Encoders.float8
-  scalarDecoder = Decoders.float8
+  encoder = Encoders.float8
+  decoder = Decoders.float8
 
 instance IsScalar Scientific where
-  scalarEncoder = Encoders.numeric
-  scalarDecoder = Decoders.numeric
+  encoder = Encoders.numeric
+  decoder = Decoders.numeric
 
 -- Text types
 instance IsScalar Text where
-  scalarEncoder = Encoders.text
-  scalarDecoder = Decoders.text
+  encoder = Encoders.text
+  decoder = Decoders.text
 
 -- Binary types
 instance IsScalar ByteString where
-  scalarEncoder = Encoders.bytea
-  scalarDecoder = Decoders.bytea
+  encoder = Encoders.bytea
+  decoder = Decoders.bytea
 
 -- Date/Time types
 instance IsScalar Day where
-  scalarEncoder = Encoders.date
-  scalarDecoder = Decoders.date
+  encoder = Encoders.date
+  decoder = Decoders.date
 
 instance IsScalar LocalTime where
-  scalarEncoder = Encoders.timestamp
-  scalarDecoder = Decoders.timestamp
+  encoder = Encoders.timestamp
+  decoder = Decoders.timestamp
 
 instance IsScalar UTCTime where
-  scalarEncoder = Encoders.timestamptz
-  scalarDecoder = Decoders.timestamptz
+  encoder = Encoders.timestamptz
+  decoder = Decoders.timestamptz
 
 instance IsScalar TimeOfDay where
-  scalarEncoder = Encoders.time
-  scalarDecoder = Decoders.time
+  encoder = Encoders.time
+  decoder = Decoders.time
 
 instance IsScalar (TimeOfDay, TimeZone) where
-  scalarEncoder = Encoders.timetz
-  scalarDecoder = Decoders.timetz
+  encoder = Encoders.timetz
+  decoder = Decoders.timetz
 
 instance IsScalar DiffTime where
-  scalarEncoder = Encoders.interval
-  scalarDecoder = Decoders.interval
+  encoder = Encoders.interval
+  decoder = Decoders.interval
 
 -- UUID
 instance IsScalar UUID where
-  scalarEncoder = Encoders.uuid
-  scalarDecoder = Decoders.uuid
+  encoder = Encoders.uuid
+  decoder = Decoders.uuid
 
 -- Network types
 instance IsScalar IPRange where
-  scalarEncoder = Encoders.inet
-  scalarDecoder = Decoders.inet
+  encoder = Encoders.inet
+  decoder = Decoders.inet
 
 instance IsScalar (Word8, Word8, Word8, Word8, Word8, Word8) where
-  scalarEncoder = Encoders.macaddr
-  scalarDecoder = Decoders.macaddr
+  encoder = Encoders.macaddr
+  decoder = Decoders.macaddr
 
 -- JSON types
 instance IsScalar Aeson.Value where
-  scalarEncoder = Encoders.jsonb
-  scalarDecoder = Decoders.jsonb
+  encoder = Encoders.jsonb
+  decoder = Decoders.jsonb
