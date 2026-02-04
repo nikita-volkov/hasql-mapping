@@ -48,6 +48,7 @@ library
   import: base
   hs-source-dirs: src/library
   exposed-modules:
+    Hasql.Mapping
     Hasql.Mapping.IsScalar
     Hasql.Mapping.IsStatement
 
