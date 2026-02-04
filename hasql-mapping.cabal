@@ -47,10 +47,11 @@ common base
 library
   import: base
   hs-source-dirs: src/library
-  exposed-modules: Hasql.Mapping
-  other-modules:
+  exposed-modules:
     Hasql.Mapping.IsScalar
     Hasql.Mapping.IsStatement
+
+  other-modules:
     Hasql.Mapping.IsTransactionalStatement
 
   build-depends:
