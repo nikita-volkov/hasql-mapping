@@ -15,6 +15,9 @@ import qualified Hasql.Encoders as Encoders
 import Prelude
 
 -- | Mapping to a scalar value. Anything but array.
+-- 
+-- The current Hasql API doesn't provide a typesafe boundary to enforce the value being scalar,
+-- so consider this to be a part of the contract to not define instances for array mappings using this class.
 class IsScalar a where
   scalarEncoder :: Encoders.Value a
   scalarDecoder :: Decoders.Value a
