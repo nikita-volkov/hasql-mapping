@@ -21,7 +21,7 @@ import qualified Hasql.Statement as Statement
 -- > import Hasql.Mapping.IsStatement
 -- > import Prelude
 -- >
--- > data SelectArtistIdsByNameParams = SelectArtistIdsByNameParams
+-- > data SelectArtistIdsByName = SelectArtistIdsByName
 -- >   { name :: Text
 -- >   }
 -- >
@@ -31,8 +31,8 @@ import qualified Hasql.Statement as Statement
 -- >   { id :: UUID
 -- >   }
 -- >
--- > instance IsStatement SelectArtistIdsByNameParams where
--- >   type Result SelectArtistIdsByNameParams = SelectArtistIdsByNameResult
+-- > instance IsStatement SelectArtistIdsByName where
+-- >   type Result SelectArtistIdsByName = SelectArtistIdsByNameResult
 -- >   statement =
 -- >     Statement.preparable sql encoder decoder
 -- >     where
@@ -42,7 +42,7 @@ import qualified Hasql.Statement as Statement
 -- >         \limit 1"
 -- >       encoder =
 -- >         mconcat
--- >           [ (\(SelectArtistIdsByNameParams x) -> x)
+-- >           [ (\(SelectArtistIdsByName x) -> x)
 -- >               >$< Encoders.param (Encoders.nonNullable Encoders.text)
 -- >           ]
 -- >       decoder =
