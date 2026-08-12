@@ -1,4 +1,15 @@
-module Hasql.Mapping.IsTransaction where
+-- | An explicit export list is required here (unlike this package's other modules) purely
+-- mechanically: a module with no export list only exports entities it defines, not ones it
+-- merely imports, so 'IsolationLevel' and 'Mode' would otherwise stay invisible to any instance
+-- that imports only this module.
+module Hasql.Mapping.IsTransaction
+  ( IsTransaction (..),
+    IsolationLevel (..),
+    Mode (..),
+    toSessionWithUnboundedRetries,
+    toSessionWithoutRetries,
+  )
+where
 
 import qualified Hasql.Session as Session
 import Hasql.Transaction (Transaction)

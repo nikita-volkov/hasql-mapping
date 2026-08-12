@@ -84,13 +84,13 @@ test-suite test
   main-is: Main.hs
   other-modules:
     Helpers.Adapters
+    Helpers.Fixtures
     Helpers.Hooks
     Helpers.Scripts
-    -- Helpers.Fixtures
-    -- Specs.IsSessionSpec
-    -- Specs.IsStatementSpec
-    -- Specs.IsTransactionCompositionSpec
-    -- Specs.IsTransactionModeSpec
+    Specs.IsSessionSpec
+    Specs.IsStatementSpec
+    Specs.IsTransactionCompositionSpec
+    Specs.IsTransactionModeSpec
     Specs.SmokeSpec
     Specs.SpecHook
 
