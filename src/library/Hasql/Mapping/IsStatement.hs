@@ -1,5 +1,6 @@
 module Hasql.Mapping.IsStatement where
 
+import qualified Hasql.Session as Session
 import qualified Hasql.Statement as Statement
 
 -- |
@@ -53,3 +54,10 @@ import qualified Hasql.Statement as Statement
 class IsStatement a where
   type Result a
   statement :: Statement.Statement a (Result a)
+
+-- |
+-- Runs the statement as a session, the construct one level up the capability ladder. Statements
+-- have no retry axis, unlike 'Hasql.Mapping.IsTransaction.IsTransaction's runners, so this is the
+-- one bare form.
+toSession :: (IsStatement a) => a -> Session.Session (Result a)
+toSession a = Session.statement a statement
