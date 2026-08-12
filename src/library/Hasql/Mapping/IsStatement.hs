@@ -1,6 +1,9 @@
 module Hasql.Mapping.IsStatement where
 
+import qualified Hasql.Pipeline as Pipeline
+import qualified Hasql.Session as Session
 import qualified Hasql.Statement as Statement
+import qualified Hasql.Transaction as Transaction
 
 -- |
 -- Evidence that a data-structure models statement parameters determining the statement and its result type.
@@ -53,3 +56,21 @@ import qualified Hasql.Statement as Statement
 class IsStatement a where
   type Result a
   statement :: Statement.Statement a (Result a)
+
+-- |
+-- Runs the statement as a session, the construct one level up the capability ladder. Statements
+-- have no retry axis, unlike 'Hasql.Mapping.IsTransaction.IsTransaction's runners, so this is the
+-- one bare form.
+toSession :: (IsStatement a) => a -> Session.Session (Result a)
+toSession a = Session.statement a statement
+
+-- |
+-- Runs the statement as a step of a 'Hasql.Mapping.IsTransaction.IsTransaction's 'Transaction.Transaction'.
+toTransaction :: (IsStatement a) => a -> Transaction.Transaction (Result a)
+toTransaction a = Transaction.statement a statement
+
+-- |
+-- Runs the statement as a step of a 'Hasql.Session.Session's 'Pipeline.Pipeline', batching it
+-- with the other statements pipelined alongside it instead of round-tripping for each.
+toPipeline :: (IsStatement a) => a -> Pipeline.Pipeline (Result a)
+toPipeline a = Pipeline.statement a statement
