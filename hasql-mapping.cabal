@@ -91,7 +91,6 @@ test-suite test
     Specs.IsStatementSpec
     Specs.IsTransactionCompositionSpec
     Specs.IsTransactionModeSpec
-    Specs.SmokeSpec
     Specs.SpecHook
 
   build-tool-depends:
