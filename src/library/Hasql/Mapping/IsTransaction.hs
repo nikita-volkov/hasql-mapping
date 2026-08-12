@@ -42,9 +42,8 @@ import qualified Hasql.Transaction.Sessions as Sessions
 -- * An /omitted/ class method defaults to 'Serializable' and 'Write', so that an author who never
 --   considered the question gets the safe answer.
 --
--- Both are conservative, by opposite rules. The join is declared by hand rather than derived:
--- raising a component's isolation does not update its composites, so composites need re-checking
--- when a part changes.
+-- Both are conservative, by opposite rules. The join is declared explicitly rather than derived,
+-- so changing which components make up a composite requires updating these declarations as well.
 --
 -- ==== __Example of such a module__
 --
