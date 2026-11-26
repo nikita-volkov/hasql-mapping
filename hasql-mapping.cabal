@@ -1,6 +1,6 @@
 cabal-version: 3.0
 name: hasql-mapping
-version: 0.1.1.0
+version: 0.1.1.1
 synopsis: SDK for defining modular mappings to databases on top of Hasql
 description:
   SDK for defining mappings to databases using Hasql that promotes modular design.
@@ -60,7 +60,7 @@ library
     aeson >=2.0 && <3,
     base >=4.12 && <5,
     bytestring >=0.10 && <0.13,
-    hasql ^>=1.10.3 || ^>=2.0,
+    hasql ^>=1.10.3 || ^>=2.0 || ^>=2.1,
     hasql-transaction ^>=1.2.3,
     iproute >=1.7 && <2,
     scientific >=0.3 && <0.4,

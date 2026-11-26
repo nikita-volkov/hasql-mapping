@@ -1,3 +1,7 @@
+# v0.1.1.1
+
+- Added support for Hasql 2.1.
+
 # v0.1.1.0
 
 - Added `Hasql.Mapping.IsTransaction` and `Hasql.Mapping.IsSession`, completing the class family alongside `IsScalar` and `IsStatement`.
